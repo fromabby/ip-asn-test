@@ -1,0 +1,8 @@
+{"as_number":10995,"ip":"161.150.35.7","expected":8866,"isp":"PNCBANK","country_code":"US"}
+{"as_number":55222,"ip":"162.211.100.74","expected":10995,"isp":"9219-1568QUEBEC-NET7777","country_code":"CA"}
+{"as_number":46710,"ip":"162.210.213.38","expected":10995,"isp":"RADICAL-DESERT-LLC-1","country_code":"US"}
+{"as_number":0,"ip":"87.126.212.81","expected":8866,"isp":"VIVACOM-AS BULGARIA","country_code":"BG"}
+{"as_number":0,"ip":"62.201.12.203","expected":0,"isp":"Not routed","country_code":"None"}
+{"as_number":0,"ip":"187.59.65.231","expected":10995,"isp":"TELEFONICA BRASIL S.A","country_code":"BR"}
+{"as_number":0,"ip":"187.161.247.115","expected":46710,"isp":"Television Internacional, S.A. de C.V.","country_code":"MX"}
+{"as_number":0,"ip":"203.120.37.210","expected":55222,"isp":"Not routed","country_code":"None"}

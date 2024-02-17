@@ -39,6 +39,7 @@ func GenerateTestScript() error {
 		asn := cols[1]
 		isp := cols[2]
 		country_code := cols[3]
+
 		data = []byte(fmt.Sprintf("curl \"http://localhost:8081/ip-info?ip=%s\" | jq -c '.ip_info | { as_number: .as_number, ip: .ip, expected: %s, isp: \"%s\", country_code: \"%s\" }' &\n", ip, asn, isp, country_code))
 
 		_, err = f.Write(data)

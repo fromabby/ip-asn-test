@@ -27,7 +27,7 @@ func convertIPRangeToCIDR(range_start, range_end string) ([]netip.Prefix, error)
 	return s.Prefixes(), nil
 }
 
-func generateUniqueRandomNumbers(n, max int) []int {
+func getRandomLineIndexes(n, max int) []int {
 	set := make(map[int]bool)
 	var result []int
 	for len(set) < n {
@@ -40,7 +40,7 @@ func generateUniqueRandomNumbers(n, max int) []int {
 	return result
 }
 
-func GenerateSampleDataList() error {
+func GenerateSampleDataList() ([]string, error) {
 	var (
 		sep           = "\t"
 		readFileName  = "./ip2asn-combined.tsv"
@@ -49,22 +49,25 @@ func GenerateSampleDataList() error {
 
 	file, err := os.Open(readFileName)
 	if err != nil {
-		return err
+		return nil, err
 	}
 
 	scanner := bufio.NewScanner(file)
 
 	f, err := os.Create(writeFileName)
 	if err != nil {
-		return err
+		return nil, err
 	}
 
 	defer f.Close()
 
-	// create a slice of 200 random line numbers out of 634062 lines
-	nums := generateUniqueRandomNumbers(200, 634062)
+	// create a slice of random line numbers out of 634062 lines
+	size := 10
+	fileSize := 634062
+	nums := getRandomLineIndexes(size, fileSize)
 
 	var data []byte
+	var asns []string
 	var i = 0
 	for scanner.Scan() {
 		if !slices.Contains(nums, i) {
@@ -75,7 +78,8 @@ func GenerateSampleDataList() error {
 		line := strings.TrimSpace(scanner.Text())
 
 		// ignore ipv6 for now
-		if line == "" || strings.HasPrefix(line, "#") || strings.Contains(line, ":") {
+		isIpv6 := strings.Contains(line, ":")
+		if line == "" || strings.HasPrefix(line, "#") || isIpv6 {
 			continue
 		}
 
@@ -92,18 +96,19 @@ func GenerateSampleDataList() error {
 
 		for _, c := range cidr {
 			data = []byte(fmt.Sprintf("%s\t%s\n", c.String(), line))
+			asns = append(asns, cols[2])
 		}
 
 		_, err = f.Write(data)
 		if err != nil {
-			return err
+			return nil, err
 		}
 		i++
 	}
 
 	if err := scanner.Err(); err != nil {
-		return err
+		return nil, err
 	}
 
-	return nil
+	return asns, nil
 }

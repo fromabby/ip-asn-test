@@ -18,7 +18,7 @@ type TestCase struct {
 
 func main() {
 	var (
-		readFileName = "../result.txt"
+		readFileName = "../testcases.txt"
 	)
 
 	file, err := os.Open(readFileName)

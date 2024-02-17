@@ -10,13 +10,13 @@ func check(e error) {
 
 func main() {
 	// get random sample data from ip2asn-combined.tsv
-	err := lib.GenerateSampleDataList()
+	asnList, err := lib.GenerateSampleDataList()
 	check(err)
 
 	{
 		// create list of asn in sample data list
-		asnList, err := lib.GenerateASNList()
-		check(err)
+		// asnList, err := lib.GenerateASNList()
+		// check(err)
 
 		// create random ip for each line sample data ip range
 		err = lib.GenerateSampleTestIPList(asnList)
