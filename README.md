@@ -22,5 +22,5 @@ Check the result
 
 ```
 cd test
-go run main.go
+go run main.go > ./test_result.txt
 ```
