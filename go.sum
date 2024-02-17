@@ -1,0 +1,4 @@
+github.com/praserx/ipconv v1.2.1 h1:MWGfrF+OZ0pqIuTlNlMgvJDDbohC3h751oN1+Ov3x4k=
+github.com/praserx/ipconv v1.2.1/go.mod h1:DSy+AKre/e3w/npsmUDMio+OR/a2rvmMdI7rerOIgqI=
+go4.org/netipx v0.0.0-20231129151722-fdeea329fbba h1:0b9z3AuHCjxk0x/opv64kcgZLBseWJUpBw5I82+2U4M=
+go4.org/netipx v0.0.0-20231129151722-fdeea329fbba/go.mod h1:PLyyIXexvUFg3Owu6p/WfdlivPbZJsZdgWZlrGope/Y=
