@@ -1,6 +1,6 @@
 package main
 
-import "my-playground/lib"
+import "github.com/fromabby/ip-asn-test/lib"
 
 func check(e error) {
 	if e != nil {
