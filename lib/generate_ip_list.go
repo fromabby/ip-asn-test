@@ -11,7 +11,7 @@ import (
 	"github.com/praserx/ipconv"
 )
 
-func GenerateSampleTestIPList(asnList []string) error {
+func GenerateIPList(asnList []string) error {
 	var (
 		sep           = "\t"
 		readFileName  = "./files/sample_data.tsv"

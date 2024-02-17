@@ -12,35 +12,7 @@ import (
 	"go4.org/netipx"
 )
 
-func convertIPRangeToCIDR(range_start, range_end string) ([]netip.Prefix, error) {
-	var b netipx.IPSetBuilder
-	b.AddRange(netipx.IPRangeFrom(
-		netip.MustParseAddr(range_start),
-		netip.MustParseAddr(range_end),
-	))
-
-	s, err := b.IPSet()
-	if err != nil {
-		return nil, err
-	}
-
-	return s.Prefixes(), nil
-}
-
-func getRandomLineIndexes(n, max int) []int {
-	set := make(map[int]bool)
-	var result []int
-	for len(set) < n {
-		value := rand.Intn(max)
-		if !set[value] {
-			set[value] = true
-			result = append(result, value)
-		}
-	}
-	return result
-}
-
-func GenerateSampleDataList() ([]string, error) {
+func GenerateDataPool() ([]string, error) {
 	var (
 		sep           = "\t"
 		readFileName  = "./ip2asn-combined.tsv"
@@ -111,4 +83,32 @@ func GenerateSampleDataList() ([]string, error) {
 	}
 
 	return asns, nil
+}
+
+func convertIPRangeToCIDR(range_start, range_end string) ([]netip.Prefix, error) {
+	var b netipx.IPSetBuilder
+	b.AddRange(netipx.IPRangeFrom(
+		netip.MustParseAddr(range_start),
+		netip.MustParseAddr(range_end),
+	))
+
+	s, err := b.IPSet()
+	if err != nil {
+		return nil, err
+	}
+
+	return s.Prefixes(), nil
+}
+
+func getRandomLineIndexes(n, max int) []int {
+	set := make(map[int]bool)
+	var result []int
+	for len(set) < n {
+		value := rand.Intn(max)
+		if !set[value] {
+			set[value] = true
+			result = append(result, value)
+		}
+	}
+	return result
 }
