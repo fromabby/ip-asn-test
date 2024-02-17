@@ -9,7 +9,7 @@ Download the ip2asn masterfile
 Generate test sample and create a shell script that will query to geoip-proxy-registry
 
 ```
-cd . && go run main.go
+go run main.go
 ```
 
 Run the test script
@@ -21,5 +21,6 @@ Run the test script
 Check the result
 
 ```
-cd test && go run main.go
+cd test
+go run main.go
 ```
